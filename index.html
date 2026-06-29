@@ -131,15 +131,21 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 52px;
-            padding: 0 1.5%;
-            position: sticky;
-            top: 0;
+            height: 56px;
+            padding: 0 24px;
+            position: fixed;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%);
             z-index: 100;
             background-color: var(--bg-glass);
             backdrop-filter: blur(var(--glass-blur));
             -webkit-backdrop-filter: blur(var(--glass-blur));
             transition: background-color 0.5s ease, color 0.5s ease;
+            border: 1px solid var(--border-color);
+            border-radius: 100px;
+            width: calc(100% - 8vw);
+            max-width: 600px;
         }
 
         .site-header .logo {
@@ -224,6 +230,13 @@
             text-decoration: none;
             color: var(--text-color);
             cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 12px;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
         }
 
         .card-image-wrapper {
@@ -241,6 +254,12 @@
             object-fit: cover;
             transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
+
+        .work-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+        body.light-mode .work-card:hover { border-color: rgba(0,0,0,0.25); }
 
         .work-card:hover .card-image-wrapper img, .work-card:hover .card-image-wrapper video {
             transform: scale(1.05);
@@ -278,7 +297,7 @@
         }
 
         /* FLOATING BUTTON */
-        .floating-about-btn {
+        /* .floating-about-btn {
             position: fixed;
             right: 0;
             top: 50%;
@@ -318,7 +337,7 @@
         .floating-about-btn.is-pushed {
             transform: translate(calc(-1 * var(--panel-width)), -50%);
             animation: none;
-        }
+        } */
 
         @keyframes btn-nudge {
             0%, 80%, 100% { transform: translateY(-50%) translateX(0); }
@@ -453,6 +472,171 @@
             }
         }
 
+        /* NEW EDITORIAL ABOUT PAGE STYLES */
+        .about-hero-text {
+            font-size: clamp(18px, 2vw, 28px);
+            line-height: 1.4;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            max-width: 1000px;
+            margin-bottom: 80px;
+            color: var(--text-color);
+        }
+
+        .about-hero-text span.muted {
+            color: var(--text-muted);
+        }
+
+        .about-layout {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 80px;
+            padding-bottom: 120px;
+            align-items: start;
+        }
+
+        @media (max-width: 900px) {
+            .about-layout { 
+                grid-template-columns: 1fr; 
+                gap: 60px; 
+            }
+        }
+
+        .about-section-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 16px;
+        }
+
+        /* Resume Specific Styles */
+        .timeline-container {
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 0;
+            margin-bottom: 0;
+            border-left: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .timeline-container:hover .timeline-item:not(:hover) {
+            opacity: 0.4;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .timeline-title {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 0;
+        }
+
+        .timeline-company {
+            font-size: 16px;
+            color: var(--text-color);
+            opacity: 0.8;
+            font-weight: 500;
+        }
+
+        .timeline-date {
+            font-size: 14px;
+            color: var(--text-muted);
+            font-family: monospace;
+            letter-spacing: 0.02em;
+            padding: 4px 12px;
+            background-color: var(--accent-bg);
+            border-radius: 100px;
+            border: 1px solid var(--border-color);
+        }
+
+        .timeline-desc {
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-muted);
+            margin: 0;
+            max-width: 90%;
+        }
+
+        .sidebar-block {
+            margin-bottom: 60px;
+        }
+
+        .pill-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 0;
+        }
+
+        .pill {
+            padding: 10px 18px;
+            border-radius: 100px;
+            border: 1px solid var(--border-color);
+            font-size: 14px;
+            color: var(--text-color);
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+        .pill:hover {
+            background: var(--text-color);
+            color: var(--bg-color);
+            transform: translateY(-2px);
+        }
+
+        .tool-category {
+            margin-bottom: 32px;
+        }
+        .tool-category:last-child { margin-bottom: 0; }
+        
+        .tool-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .tool-label::after {
+            content: '';
+            height: 1px;
+            flex: 1;
+            background-color: var(--border-color);
+        }
+
+        .edu-item {
+            margin-bottom: 24px;
+        }
+        .edu-item:last-child {
+            margin-bottom: 0;
+        }
+        .edu-title {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        .edu-school {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
         /* SLIDE PANEL */
         .about-panel {
             position: fixed;
@@ -460,21 +644,34 @@
             right: 0;
             width: var(--panel-width);
             height: 100vh;
-            background-color: var(--bg-color);
+            background-color: var(--card-bg);
+            border-left: 1px solid var(--border-color);
             color: var(--text-color);
             z-index: 1000;
             transform: translateX(100%);
             transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.6s ease;
-            padding: 100px 50px;
+            padding: 80px 50px;
             overflow-y: auto;
         }
 
         .about-panel.is-open { transform: translateX(0); }
 
+        .panel-close {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            font-size: 32px;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+        .panel-close:hover { opacity: 1; }
+
         .panel-overlay {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
-            background: rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
             z-index: 999;
             opacity: 0;
             pointer-events: none;
@@ -482,6 +679,18 @@
         }
 
         .panel-overlay.is-open { opacity: 1; pointer-events: auto; }
+
+        .contact-link {
+            display: block;
+            font-size: 18px;
+            color: var(--text-color);
+            text-decoration: none;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-color);
+            transition: opacity 0.3s;
+        }
+        .contact-link:hover { opacity: 0.6; }
 
         @media (max-width: 768px) {
             .main-nav { display: none; }
@@ -722,19 +931,43 @@
 </head>
 <body>
 
+     <!-- Panel Overlay & Contact Panel -->
+    <div class="panel-overlay" id="panelOverlay" onclick="toggleAboutPanel()"></div>
+    <aside class="about-panel" id="aboutPanel">
+        <div class="panel-close" onclick="toggleAboutPanel()">&times;</div>
+        <h2 style="font-size: 32px; margin-bottom: 10px; font-weight: 500;">Let's Connect</h2>
+        <p style="margin-bottom: 40px;">Looking for a UI/UX specialist, or a creative problem-solver for your team? Reach out.</p>
+        
+        <div>
+            <h3 class="tool-label">Email</h3>
+            <a href="mailto:vikas.jat17sep@gmail.com" class="contact-link">vikas.jat17sep@gmail.com</a>
+            
+            <h3 class="tool-label" style="margin-top: 30px;">Phone</h3>
+            <a href="tel:+919755745301" class="contact-link">+91 9755 745 301</a>
+            
+            <h3 class="tool-label" style="margin-top: 30px;">Social</h3>
+            <a href="https://www.linkedin.com/in/jat-vikas-a1205761" target="_blank" class="contact-link">LinkedIn Profile ↗</a>
+        </div>
+    </aside>
+
     <div id="mainContent" class="main-wrapper">
         <header class="site-header">
-            <div class="logo" onclick="showPage('work')">Blacksof</div>
+            <div class="logo" onclick="showPage('work')">Vikas Jat</div>
             <nav class="main-nav">
                 <span onclick="showPage('work')" id="nav-work" class="active">Work</span>
-                <span>Services</span>
-                <span>About</span>
-                <span>Culture</span>
-                <span>Think</span>
-                <span>Contact</span>
+                <!-- <span>Services</span> -->
+                <span onclick="showPage('about')" id="nav-about" class="nav-item">About</span>
+                <!-- <span>Culture</span> -->
+                <!-- <span>Think</span> -->
+                <span onclick="toggleAboutPanel()">Contact</span>
                 <button id="themeToggle" class="theme-toggle" aria-label="Toggle Theme"></button>
             </nav>
         </header>
+
+        <!-- FLOATING CONTACT BUTTON -->
+        <div class="floating-about-btn" id="floatingBtn" onclick="toggleAboutPanel()">
+            <!-- Let's Talk -->
+        </div>
 
         <!-- WORK PAGE GRID -->
         <main id="work-page" class="page-view container-content active">
@@ -880,6 +1113,147 @@
                     <div class="card-info">
                         <div class="card-title">Worthynote</div>
                         <div class="card-category">WorthyNote started as a way to slow down and reflect.</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- ABOUT PAGE (NEW RESUME BENTO GRID) -->
+        <main id="about-page" class="page-view" style="margin-top: 10%;">
+            <div class="container-content">
+                <div class="page-header reveal">
+                    <h1>Vikas Jat<br/><span style="color:var(--text-muted);">UI / UX Specialist</span></h1>
+                </div>
+
+                <div class="reveal">
+                    <!-- Expressive Intro -->
+                    <div class="about-hero-text">
+                        I'm a UI/UX Designer with 6+ years of experience creating intuitive and user-centered digital experiences. Currently at Blacksof, I design products that balance user needs with business goals.
+                        Beyond design, I work with HTML and CSS, collaborating closely with developers to ensure designs are implemented exactly as intended. I enjoy solving complex problems, exploring AI-powered workflows, and continuously learning new technologies.
+                        Based in Indore, I believe great design comes from curiosity, collaboration, and attention to detail. Let's create something meaningful together.
+                    </div>
+
+                    <!-- Editorial Two-Column Layout -->
+                    <div class="about-layout">
+                        
+                        <!-- Left Column: Experience -->
+                        <div class="about-main-col">
+                            <h2 class="about-section-title">Experience</h2>
+                            
+                            <div class="timeline-container">
+                                <div class="timeline-item">
+                                    <div class="timeline-header">
+                                        <div>
+                                            <div class="timeline-title">UI/UX Specialist</div>
+                                            <div class="timeline-company">Blacksof</div>
+                                        </div>
+                                        <div class="timeline-date">June 2024 - Present</div>
+                                    </div>
+                                    <p class="timeline-desc">Leading the design direction for our digital products. My biggest focus right now is pioneering the integration of AI tools directly into my daily workflow. By augmenting my process with AI, I'm able to explore creative variations rapidly, solve problems faster, and deliver smarter, more robust solutions to the team.</p>
+                                </div>
+
+                                <div class="timeline-item">
+                                    <div class="timeline-header">
+                                        <div>
+                                            <div class="timeline-title">UI/UX Senior Designer</div>
+                                            <div class="timeline-company">Blacksof</div>
+                                        </div>
+                                        <div class="timeline-date">June 2022 - April 2024</div>
+                                    </div>
+                                    <p class="timeline-desc">Stepped up to take ownership of larger, complex product architectures. I led cross-functional brainstorming sessions and built highly detailed, interactive mockups that significantly streamlined our design-to-development handover pipeline.</p>
+                                </div>
+
+                                <div class="timeline-item">
+                                    <div class="timeline-header">
+                                        <div>
+                                            <div class="timeline-title">UI/UX Designer</div>
+                                            <div class="timeline-company">Blacksof</div>
+                                        </div>
+                                        <div class="timeline-date">June 2021 - April 2022</div>
+                                    </div>
+                                    <p class="timeline-desc">Responsible for the end-to-end wireframing and prototyping phases. I worked closely with stakeholders in daily scrums, translating rough concepts into polished low and high-fidelity mockups that gave engineering a crystal clear roadmap.</p>
+                                </div>
+
+                                <div class="timeline-item">
+                                    <div class="timeline-header">
+                                        <div>
+                                            <div class="timeline-title">UI/UX Designer</div>
+                                            <div class="timeline-company">Connekt Technologies</div>
+                                        </div>
+                                        <div class="timeline-date">2020 - 2021</div>
+                                    </div>
+                                    <p class="timeline-desc">This is where my UI/UX journey truly began. I dove deep into the fundamentals—producing structural wireframes, storyboards, user flows, and site maps. It was a fast-paced environment that taught me how to establish clear design logic before touching the visuals.</p>
+                                </div>
+                            </div>
+
+                            <h2 class="about-section-title" style="margin-top: 80px;">Core Strengths</h2>
+                            <p style="max-width: 90%; font-size: 16px; color: var(--text-muted); line-height: 1.6;">
+                                Adaptability is my strongest asset. Because I've been working with web platforms since the very beginning of my career, I'm quick to master new ecosystems. Whether it's tackling inclusive fintech UI, creating brand audits, designing engaging newsletters, or building end-to-end solutions in Webflow and Shopify, I bring a holistic view to every project.
+                            </p>
+                        </div>
+
+                        <!-- Right Column: Skills & Details -->
+                        <div class="about-side-col">
+                            
+                            <div class="sidebar-block">
+                                <h2 class="about-section-title">Skills & Capabilities</h2>
+                                <div class="pill-container">
+                                    <span class="pill">User Research</span>
+                                    <span class="pill">Heuristic Evaluation</span>
+                                    <span class="pill">Wireframing</span>
+                                    <span class="pill">User Testing</span>
+                                    <span class="pill">Prototyping</span>
+                                    <span class="pill">UI Design</span>
+                                    <span class="pill">Brand Audit</span>
+                                    <span class="pill">Frontend Dev (HTML/CSS)</span>
+                                </div>
+                            </div>
+
+                            <div class="sidebar-block">
+                                <h2 class="about-section-title">Toolkit</h2>
+                                
+                                <div class="tool-category">
+                                    <div class="tool-label">Design & Prototyping</div>
+                                    <div class="pill-container">
+                                        <span class="pill" style="border-color: transparent; background: var(--accent-bg);">Figma</span>
+                                        <span class="pill" style="border-color: transparent; background: var(--accent-bg);">Adobe XD</span>
+                                        <span class="pill" style="border-color: transparent; background: var(--accent-bg);">Photoshop</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="tool-category">
+                                    <div class="tool-label">AI Workflows</div>
+                                    <div class="pill-container">
+                                        <span class="pill" style="border-color: transparent; background: var(--accent-bg);">Claude AI</span>
+                                        <span class="pill" style="border-color: transparent; background: var(--accent-bg);">ChatGPT</span>
+                                        <span class="pill" style="border-color: transparent; background: var(--accent-bg);">Gemini</span>
+                                        <span class="pill" style="border-color: transparent; background: var(--accent-bg);">Magnific AI</span>
+                                    </div>
+                                </div>
+
+                                <div class="tool-category">
+                                    <div class="tool-label">Development</div>
+                                    <div class="pill-container">
+                                        <span class="pill" style="border-color: transparent; background: var(--accent-bg);">VS Code</span>
+                                        <span class="pill" style="border-color: transparent; background: var(--accent-bg);">Notepad ++</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="sidebar-block">
+                                <h2 class="about-section-title">Education</h2>
+                                <div class="edu-item">
+                                    <div class="edu-title">B.Sc. Computer Science</div>
+                                    <div class="edu-school">DAVV Indore</div>
+                                </div>
+                                <div class="edu-item">
+                                    <div class="edu-title">Graphic Design Diploma</div>
+                                    <div class="edu-school">Virtual Voyage College of Design</div>
+                                </div>
+                            </div>
+
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -1883,27 +2257,12 @@
                     </video>
             </div> 
 
-            
-            
-            
-            <div class="container-mockup reveal">   
-                    <div class="narrow"><p style="margin-bottom:5px;font-weight:600;">We need to create a brand guideline in this style.</p></div>                                 
-                    <video class="full" loop muted playsinline autoplay style="height:1080px; background-color:#000000;">
-                        <source src="/assets/video/supreme-brand-guideline-template.mp4" type="video/mp4" >
-                    </video>
-            </div> 
-
-            <div class="container-mockup reveal">
-                <div class="narrow"><p style="margin-bottom:5px;font-weight:600;">We need to create a brand strategy video in this style.</p></div>                                 
-                <img src="https://i.pinimg.com/1200x/2e/c4/3b/2ec43b026877b24481c24d4ec1c4b87a.jpg" class="flow-image">
-            </div>
-
             <div class="container-mockup reveal">                       
-                    <div class="narrow"><p style="margin-bottom:5px;font-weight:600;">We need to create a multiple hero banner mockup in this style.</p></div>                                 
                     <video class="full" loop muted playsinline autoplay>
-                        <source src="/assets/video/supreme-multiple-hero-banner-mockup.mp4" type="video/mp4" >
+                        <source src="/assets/video/supremebannervideos.mp4" type="video/mp4" >
                     </video>
             </div>
+            
 
             <div class="container-mockup reveal">                       
                     <video class="full" loop muted playsinline autoplay>
@@ -1946,18 +2305,11 @@
                 </div>
             </div>
 
-            <div class="container-mockup reveal">   
-                    <div class="narrow"><p style="margin-bottom:5px;font-weight:600;">Currently, we are using a compressed video, which is causing the visuals to appear blurry. We need to optimize the video size in motion while maintaining better visual quality.</p></div>
-                    <video class="full" loop muted playsinline autoplay controls style="height:1080px; background-color:#000000;">
-                        <source src="/assets/video/supreme-intro-video.mp4" type="video/mp4" >
+            <!-- <div class="container-mockup reveal">                       
+                    <video class="full" loop muted playsinline autoplay>
+                        <source src="/assets/video/supreme-multilanguage.mp4" type="video/mp4" >
                     </video>
-            </div> 
-
-            <div class="container-mockup reveal">     
-                <div class="narrow"><p style="margin-bottom:5px;font-weight:600;">We need to create a language selection motion animation. Reference:https://studio-size.com/work/emilie-aubry/</p></div>                                            
-                <img src="assets/img/supreme-language.png" class="flow-image">
-            </div>
-            
+            </div> -->
 
             <div class="container-mockup reveal">                       
                     <video class="full" loop muted playsinline autoplay>
@@ -2077,10 +2429,20 @@
     </aside>
 
     <script>
-        const themeToggle = document.getElementById('themeToggle');
-        themeToggle.addEventListener('click', () => { document.body.classList.toggle('dark-mode'); });
+        // const themeToggle = document.getElementById('themeToggle');
+        // themeToggle.addEventListener('click', () => { document.body.classList.toggle('dark-mode'); });
 
-        const VALID_PAGES = ['work', 'nippon-india', 'gems-mantra', 'astro-arun', 'posidex', 'lauritz-knudsen', 'rbi', 'dejoule', 'piramal-nutrition-solutions', 'aak', 'kheyti', 'nippon-aif','mirach-aerospace','supreme-group','worthynote'];
+        const themeToggle = document.getElementById('themeToggle');
+
+// Enable dark mode by default
+document.body.classList.add('dark-mode');
+
+// Toggle theme on button click
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+});
+
+        const VALID_PAGES = ['work', 'about', 'nippon-india', 'gems-mantra', 'astro-arun', 'posidex', 'lauritz-knudsen', 'rbi', 'dejoule', 'piramal-nutrition-solutions', 'aak', 'kheyti', 'nippon-aif','mirach-aerospace','supreme-group','worthynote'];
 
         function pathToPageId(pathname) {
             const slug = (pathname || '/').replace(/^\/+|\/+$/g, '');
@@ -2104,6 +2466,7 @@
             floatingBtn.style.display = isCaseStudy ? 'flex' : 'none';
             
             const mappings = {
+                'about':["About","About Vikas Jat"],
                 'nippon-india': ["Nippon India", "Building a compliance-integrated brand communication system for India's leading mutual fund."],
                 'gems-mantra': ["Gems Mantra", "Crafting a luxury identity for rare gemstones, merging mysticism with high-end retail."],
                 'astro-arun': ["Astro Arun Pandit", "Transforming personal astrology into a modern digital brand and educational platform."],
@@ -2155,6 +2518,30 @@
         floatingBtn.addEventListener('click', togglePanel);
         closeBtn.addEventListener('click', togglePanel);
         panelOverlay.addEventListener('click', togglePanel);
+
+
+        // --- SLIDE PANEL (CONTACT) ---
+        function toggleAboutPanel() {
+            const panel = document.getElementById('aboutPanel');
+            const overlay = document.getElementById('panelOverlay');
+            const mainWrapper = document.getElementById('mainContent');
+            const floatingBtn = document.getElementById('floatingBtn');
+            const isOpen = panel.classList.contains('is-open');
+
+            if (isOpen) {
+                panel.classList.remove('is-open');
+                overlay.classList.remove('is-open');
+                mainWrapper.classList.remove('is-pushed');
+                floatingBtn.classList.remove('is-pushed');
+                document.body.style.overflow = 'auto';
+            } else {
+                panel.classList.add('is-open');
+                overlay.classList.add('is-open');
+                mainWrapper.classList.add('is-pushed');
+                floatingBtn.classList.add('is-pushed');
+                document.body.style.overflow = 'hidden';
+            }
+        }
 
         const videoObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
