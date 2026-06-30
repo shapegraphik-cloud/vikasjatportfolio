@@ -98,7 +98,7 @@
 
         /* LAYOUT UTILITIES */
         .container-mockup {
-            width: 97%;
+            width: 100%;
             margin: 0 auto;
         }
 
@@ -215,7 +215,7 @@
 
         /* WORK PAGE - GRID SYSTEM */
         .work-header {
-            margin-top: 80px;
+            margin-top: 160px;
             margin-bottom: 80px;
         }
 
@@ -927,6 +927,82 @@
                 width: 200px;
             }
         }
+
+        /* CASE STUDY STYLES */
+        .cs-hero { margin-top: 140px; margin-bottom: 60px; }
+        .cs-back { 
+            display: inline-flex; align-items: center; gap: 8px; font-size: 12px; 
+            text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); 
+            cursor: pointer; margin-bottom: 40px; transition: color 0.3s ease; 
+        }
+        .cs-back:hover { color: var(--text-color); }
+        
+        .cs-title { 
+            font-size: clamp(40px, 8vw, 80px); font-weight: 500; 
+            line-height: 1.05; letter-spacing: -0.04em; margin-bottom: 60px; 
+            color: var(--text-color); 
+        }
+        
+        .cs-meta { 
+            display: flex; flex-wrap: wrap; gap: 80px; padding: 32px 0; 
+            border-top: 1px solid var(--border-color); 
+            border-bottom: 1px solid var(--border-color); 
+            margin-bottom: 80px; 
+        }
+        .meta-item { display: flex; flex-direction: column; gap: 8px; }
+        .meta-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); }
+        .meta-value { font-size: 16px; font-weight: 500; color: var(--text-color); }
+
+        .cs-content-block { 
+            display: grid; grid-template-columns: 1fr 2fr; gap: 60px; 
+            margin-bottom: 80px; margin-top: 80px; align-items: start; 
+        }
+        .cs-block-title { font-size: 24px; font-weight: 500; letter-spacing: -0.02em; color: var(--text-color); }
+        .cs-block-text p { font-size: 18px; line-height: 1.7; color: var(--text-muted); margin-bottom: 24px; }
+
+        @media (max-width: 768px) {
+            .cs-content-block { grid-template-columns: 1fr; gap: 24px; }
+            .cs-image-grid { grid-template-columns: 1fr; }
+            .cs-meta { gap: 40px; flex-direction: column; }
+        }
+
+        .live-visit-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        body.light-mode .live-visit-btn {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .live-visit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.15);
+        }
+
+        body.light-mode .live-visit-btn:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .live-visit-btn svg {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .live-visit-btn:hover svg {
+            transform: translate(2px, -2px);
+        }
+
+
     </style>
 </head>
 <body>
@@ -972,10 +1048,72 @@
         <!-- WORK PAGE GRID -->
         <main id="work-page" class="page-view container-content active">
             <div class="work-header reveal active">
-                <h1>Selected Work</h1>
+                <h1>Work</h1>
             </div>
             
             <div class="work-grid reveal active">
+                <!-- Supreme Group -->
+                <div class="work-card" onclick="showPage('supreme-group')">
+                    <div class="card-image-wrapper">
+                        <video autoplay loop muted playsinline>
+                            <source src="https://www.supremegroup.co.in/static/media/home-banner.5fd7188d9e2310610568.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-title">Supreme Group</div>
+                        <div class="card-category">Elevating industries with world-class nonwoven solutions.</div>
+                    </div>
+                </div>
+                <!-- AAK -->
+                <div class="work-card" onclick="showPage('aak')">
+                    <div class="card-image-wrapper">
+                        <video autoplay loop muted playsinline>
+                            <source src="/assets/video/aak-post-video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-title">AAK</div>
+                        <div class="card-category">Impact through strategic synergy</div>
+                    </div>
+                </div>
+                <!-- Nippon AIF -->
+                <div class="work-card" onclick="showPage('nippon-aif')">
+                    <div class="card-image-wrapper">
+                        <video autoplay loop muted playsinline>
+                            <source src="/assets/video/nippon-aif-hero-video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-title">Nippon AIF</div>
+                        <div class="card-category">Leading provider of Category II and Category III Alternative Investment Funds (AIFs) in India.</div>
+                    </div>
+                </div>
+
+                <!-- DeJoule -->
+                <div class="work-card" onclick="showPage('dejoule')">
+                    <div class="card-image-wrapper">
+                        <video autoplay loop muted playsinline>
+                            <source src="/assets/video/dejoule-about-us-video-clip.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-title">DeJoule</div>
+                        <div class="card-category">Clean Energy / Brand Identity</div>
+                    </div>
+                </div>
+                <!-- Kheyti -->
+                <div class="work-card" onclick="showPage('kheyti')">
+                    <div class="card-image-wrapper">
+                        <video autoplay loop muted playsinline>
+                            <source src="/assets/video/kheyti-hero-video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-title">Kheyti</div>
+                        <div class="card-category">Affordable climate-smart farming solution for India’s smallholders.</div>
+                    </div>
+                </div>                
+
                 <!-- Nippon India -->
                 <div class="work-card" onclick="showPage('nippon-india')">
                     <div class="card-image-wrapper">
@@ -1020,18 +1158,7 @@
                     </div>
                 </div>
 
-                <!-- DeJoule -->
-                <div class="work-card" onclick="showPage('dejoule')">
-                    <div class="card-image-wrapper">
-                        <video autoplay loop muted playsinline>
-                            <source src="/assets/video/dejoule-about-us-video-clip.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="card-info">
-                        <div class="card-title">DeJoule</div>
-                        <div class="card-category">Clean Energy / Brand Identity</div>
-                    </div>
-                </div>
+                
                 <!-- Piramal Nutrition Solutions -->
                 <div class="work-card" onclick="showPage('piramal-nutrition-solutions')">
                     <div class="card-image-wrapper">
@@ -1045,42 +1172,7 @@
                         <div class="card-category">Health & Wellness / Brand Identity</div>
                     </div>
                 </div>
-                <!-- AAK -->
-                <div class="work-card" onclick="showPage('aak')">
-                    <div class="card-image-wrapper">
-                        <video autoplay loop muted playsinline>
-                            <source src="/assets/video/aak-post-video.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="card-info">
-                        <div class="card-title">AAK</div>
-                        <div class="card-category">Impact through strategic synergy</div>
-                    </div>
-                </div>
-                <!-- Kheyti -->
-                <div class="work-card" onclick="showPage('kheyti')">
-                    <div class="card-image-wrapper">
-                        <video autoplay loop muted playsinline>
-                            <source src="/assets/video/kheyti-hero-video.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="card-info">
-                        <div class="card-title">Kheyti</div>
-                        <div class="card-category">Affordable climate-smart farming solution for India’s smallholders.</div>
-                    </div>
-                </div>
-                <!-- Nippon AIF -->
-                <div class="work-card" onclick="showPage('nippon-aif')">
-                    <div class="card-image-wrapper">
-                        <video autoplay loop muted playsinline>
-                            <source src="/assets/video/nippon-aif-hero-video.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="card-info">
-                        <div class="card-title">Nippon AIF</div>
-                        <div class="card-category">Leading provider of Category II and Category III Alternative Investment Funds (AIFs) in India.</div>
-                    </div>
-                </div>
+                
                 <!-- Mirach Aerospace -->
                 <div class="work-card" onclick="showPage('mirach-aerospace')">
                     <div class="card-image-wrapper">
@@ -1093,18 +1185,7 @@
                         <div class="card-category">Innovative solutions for the aerospace industry.</div>
                     </div>
                 </div>
-                <!-- Supreme Group -->
-                <div class="work-card" onclick="showPage('supreme-group')">
-                    <div class="card-image-wrapper">
-                        <video autoplay loop muted playsinline>
-                            <source src="https://www.supremegroup.co.in/static/media/home-banner.5fd7188d9e2310610568.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="card-info">
-                        <div class="card-title">Supreme Group</div>
-                        <div class="card-category">Elevating industries with world-class nonwoven solutions.</div>
-                    </div>
-                </div>
+                
                 <!-- Worthynote -->
                 <div class="work-card" onclick="showPage('worthynote')">
                     <div class="card-image-wrapper">
@@ -1929,13 +2010,6 @@
 
             <div class="container-mockup reveal"><img src="/assets/img/aak-billboard-post-01.jpg" class="flow-image"></div>
 
-            <div class="container-mockup reveal"> 
-                    <div class="narrow"><p style="margin-bottom:5px;font-weight:600;">In this video we use the social media post.</p></div>                                   
-                    <video class="full" loop muted playsinline autoplay style="height: 950px;background-color: #000000;">
-                        <source src="/assets/video/aak-post-demo-01.mp4" type="video/mp4" >
-                    </video>
-            </div>
-
             <div class="container-mockup reveal"><img src="/assets/img/aak-mobile-post-01.jpg" class="flow-image"></div>
 
             <div class="container-mockup reveal"><img src="/assets/img/aak-mobile-post-02.jpg" class="flow-image"></div>           
@@ -1991,8 +2065,8 @@
             
             
             <div class="container-mockup reveal">                                    
-                    <video class="full" loop muted playsinline autoplay style="height: 950px;background-color: #000000;">
-                        <source src="/assets/video/aak-website-mobile-demo-01.mp4" type="video/mp4" >
+                    <video class="full" loop muted playsinline autoplay>
+                        <source src="./dist/public/assets/video/aak-mobile-screen.mp4" type="video/mp4" >
                     </video>
             </div>
 
@@ -2094,19 +2168,60 @@
 
         <!-- Nippon AIF -->
         <main id="nippon-aif-page" class="page-view">
-            <section class="section container-content reveal">
-                    <h1 style="margin-top:80px; margin-bottom:50px;">Nippon AIF</h1>
-                    <div class="narrow"><p>Nippon AIF is a platform that connects consumers with local farmers to purchase fresh, organic produce.</p></div>
-                    <div class="tags" style="display: flex; gap: 10px; opacity: 0.6; font-size: 14px;"><span>Investment</span> / <span>Website Design</span></div>
-            </section>
 
+            <div class="container-content">
+                <!-- Hero Section -->
+                <div class="cs-hero reveal">
+                    <div class="cs-back" onclick="showPage('work')">← Back to Work</div>
+                    <h1 class="cs-title">Nippon India AIF<br/><span style="color:var(--text-muted); font-size: clamp(24px, 4vw, 40px);">UI/UX Case Study</span></h1>
+                    
+                    <div class="cs-meta">
+                        <div class="meta-item">
+                            <div class="meta-label">Role</div>
+                            <div class="meta-value">UI/UX Designer</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-label">Platform</div>
+                            <div class="meta-value">Desktop & Mobile Web</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-label">Industry</div>
+                            <div class="meta-value">Financial Services</div>
+                        </div>
+                    </div>
+                </div>
             
 
             <div class="container-mockup reveal">                                    
                     <video class="full" loop muted playsinline autoplay>
                         <source src="/assets/video/nippon-aif-hero-video.mp4" type="video/mp4" >
                     </video>
-            </div>   
+            </div>  
+
+            <!-- The Challenge -->
+            <div class="cs-content-block reveal">
+                <div class="cs-block-title">The Challenge</div>
+                    <div class="cs-block-text">
+                    <p>The old website looked outdated and didn't feel like it belonged to a global brand like Nippon. Visitors couldn't get the sense of trust and premium quality the company actually stands for. It needed a fresh, modern look that feels world-class and makes it easy for anyone to understand what they offer.</p>
+                </div>
+            </div>
+
+            <!-- Our Process -->
+                <div class="cs-content-block reveal">
+                    <div class="cs-block-title">Our Process</div>
+                    <div class="cs-block-text">
+                        <p>We started by visiting competitor websites and researching how top global investment firms present themselves. This helped us understand what a world-class financial website looks and feels like. From there, we created our first wireframes to shape the concept, figured out how to use the brand colors in a way that feels premium, and built a design direction that gives Nippon India AIF a truly global identity.</p>
+                    </div>
+                </div>
+
+                            <!-- How We Resolved It -->
+                <div class="cs-content-block reveal">
+                    <div class="cs-block-title">How We Resolved It</div>
+                    <div class="cs-block-text">
+                        <p>We redesigned the layout with a cleaner structure and bolder visual hierarchy, so important information stands out instantly. The brand colors were used more confidently across sections, giving the site a premium, global feel. We simplified how the four investment offerings are presented, making them easy to compare and explore. The end result is a website that finally matches the scale and credibility of the brand behind it.</p>
+                    </div>
+                </div>
+           
 
             <div class="container-mockup reveal"><img src="/assets/img/nippon-aif-onboarding-concepts.jpg" class="flow-image"></div>
 
@@ -2124,42 +2239,49 @@
 
             <div class="container-mockup reveal"><img src="/assets/img/nippon-aif-typo.jpg" class="flow-image"></div>
 
-            <div class="container-mockup reveal">
-                <div class="narrow"><p style="margin-bottom:5px;font-weight:600;">In this visual we need to scroll the full home page.</p></div>
-                <img src="/assets/img/nippon-aif-home-mockup.jpg" class="flow-image">
+            <div class="container-mockup reveal">                                    
+                    <video class="full" loop muted playsinline autoplay>
+                        <source src="public/assets/video/nippon-aif-home-screen.mp4" type="video/mp4" >
+                        
+                    </video>
             </div>
 
             <div class="container-mockup reveal">                                    
                     <video class="full" loop muted playsinline autoplay>
                         <source src="/assets/video/nippon-aif-realestate-video.mp4" type="video/mp4" >
+                        
                     </video>
             </div>
 
-            <div class="container-mockup reveal">
-                <div class="narrow"><p style="margin-bottom:5px;font-weight:600;">In this visual we need to scroll the full page.</p></div>
+            <div class="container-mockup reveal">                
                 <img src="/assets/img/nippon-aif-website-mockup-01.jpg" class="flow-image">
             </div>
 
-            <div class="container-mockup reveal">   
-                    <div class="narrow"><p style="margin-bottom:5px;font-weight:600;">In this visual, we need a mockup similar to this style, if possible, but with a bezel-less screen design.</p></div>
+            <div class="container-mockup reveal">                       
                     <video class="full" loop muted playsinline autoplay>
                         <source src="/assets/video/nippon-aif-multiple-screen.mp4" type="video/mp4" >
                     </video>
             </div> 
 
             <div class="container-mockup reveal"><img src="/assets/img/nippon-aif-equity-mockup.jpg" class="flow-image"></div>
- 
-            <div class="container-mockup reveal">
-                <div class="narrow"><p style="margin-bottom:5px;font-weight:600;">If possible we need to create a scroll video mockup.</p></div>
-                <img src="/assets/img/nippon-aif-mobile-03.jpg" class="flow-image">
-            </div>
 
-            <div class="container-mockup reveal">
-                <div class="narrow"><p style="margin-bottom:5px;font-weight:600;">If possible we need to create a scroll video mockup.</p></div>
-                <img src="/assets/img/nippon-aif-mobile-02.jpg" class="flow-image">
-            </div>
+            <div class="container-mockup reveal">                       
+                    <video class="full" loop muted playsinline autoplay>
+                        <source src="public/assets/video/NipponAIFMobileScreen1.mp4" type="video/mp4" >
+                        
+                    </video>
+            </div>  
 
+                      <div class="container-mockup reveal">                       
+                    <video class="full" loop muted playsinline autoplay>
+                        <source src="public/assets/video/NipponAIFMobileScreen2.mp4" type="video/mp4" >
+                        
+                    </video>
+            </div>  
+            
             <div class="container-mockup reveal"><img src="/assets/img/nippon-aif-mobile-01.jpg" class="flow-image"></div>
+
+            </div>
 
             
                         
@@ -2245,11 +2367,38 @@
 
         <!-- Supreme Group -->
         <main id="supreme-group-page" class="page-view">
-            <section class="section container-content reveal">
-                    <h1 style="margin-top:80px; margin-bottom:50px;">Supreme Group</h1>
-                    <div class="narrow"><p>Supreme Industries Limited is an Indian plastics company, based in Mumbai. </p></div>
-                    <div class="tags" style="display: flex; gap: 10px; opacity: 0.6; font-size: 14px;"><span>Brand Strategy</span> / <span>UI/UX</span> / <span>Development</span></div>
-            </section>
+
+            <div class="container-content">
+                <!-- Hero Section -->
+                <div class="cs-hero reveal">
+                    <div class="cs-back" onclick="showPage('work')">← Back to Work</div>
+                    <h1 class="cs-title">Supreme Group<br/><span style="color:var(--text-muted); font-size: clamp(24px, 4vw, 40px);">UI/UX Case Study</span></h1>
+                    
+                    <div class="cs-meta">
+                        <div class="meta-item">
+                            <div class="meta-label">Role</div>
+                            <div class="meta-value">UI/UX Designer</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-label">Platform</div>
+                            <div class="meta-value">Desktop & Mobile Web</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-label">Industry</div>
+                            <div class="meta-value">Manufacturing & Industrial Materials</div>
+                        </div>
+                        <div class="meta-item" style="margin-left: auto;">
+                            <a href="https://www.supremegroup.co.in/" target="_blank" class="live-visit-btn">
+                                <span>Visit Live Website</span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                                    <polyline points="7 7 17 7 17 17"></polyline>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            
 
             <div class="container-mockup reveal">                       
                     <video class="full" loop muted playsinline autoplay>
@@ -2257,59 +2406,46 @@
                     </video>
             </div> 
 
+            <!-- The Challenge -->
+            <div class="cs-content-block reveal">
+                <div class="cs-block-title">The Challenge</div>
+                    <div class="cs-block-text">
+                    <p>Supreme Group works behind the scenes for big industries like automotive, textiles, and filtration, but their website didn't reflect the scale and innovation of their work. It felt outdated and technical, making it hard for visitors to quickly understand what the company actually does and why they're a trusted name across industries.</p>
+                </div>
+            </div>
+
+            <!-- Our Process -->
+                <div class="cs-content-block reveal">
+                    <div class="cs-block-title">Our Process</div>
+                    <div class="cs-block-text">
+                        <p>We researched how leading global industrial and manufacturing brands present themselves online, studying their tone, structure, and visual style. From there, we mapped out the key industries Supreme Group serves and built early wireframes to organize the content in a way that's easy to follow, even for someone unfamiliar with nonwoven technology.</p>
+                    </div>
+                </div>
+
+                            <!-- How We Resolved It -->
+                <div class="cs-content-block reveal">
+                    <div class="cs-block-title">How We Resolved It</div>
+                    <div class="cs-block-text">
+                        <p>We gave the website a cleaner, more modern layout with strong visuals that highlight Supreme Group's work across automotive, textile, and filtration sectors. Technical information was simplified and broken into clear sections, making it easy for both industry experts and new visitors to understand their expertise. The result is a website that feels confident, global, and true to the brand's innovative spirit.</p>
+                    </div>
+                </div>
+
             <div class="container-mockup reveal">                       
                     <video class="full" loop muted playsinline autoplay>
-                        <source src="/assets/video/supremebannervideos.mp4" type="video/mp4" >
+                        <source src="public/assets/video/supreme-innovation.mp4" type="video/mp4" >                        
                     </video>
-            </div>
+            </div>  
             
-
             <div class="container-mockup reveal">                       
                     <video class="full" loop muted playsinline autoplay>
-                        <source src="/assets/video/supreme-laptop-mockup-01.mp4" type="video/mp4" >
+                        <source src="public/assets/video/supreme-multilanguage.mp4" type="video/mp4" >                        
                     </video>
+            </div>  
+
+            <div class="container-mockup reveal">                
+                <img src="assets/img/supreme-tablet-screens.jpg" class="flow-image">
             </div>
-
-
-            <div class="container-mockup reveal">                                           
-                    <video class="full" loop muted playsinline autoplay>
-                        <source src="/assets/video/supreme-passenger-alpha.mp4" type="video/mp4" >
-                    </video>
-            </div>
-
-            <div class="container-mockup reveal">
-                <div class="grid-2">
-                    <video class="full" loop muted playsinline autoplay style="height:1080px; background-color:#000000;">
-                        <source src="/assets/video/supreme-front.mp4" type="video/mp4" >
-                    </video>
-                    <video class="full" loop muted playsinline autoplay style="height:1080px; background-color:#000000;">
-                        <source src="/assets/video/supreme-cabin.mp4" type="video/mp4" >
-                    </video>
-                </div>
-            </div>
-
-            <div class="container-mockup reveal">                                           
-                    <video class="full" loop muted playsinline autoplay>
-                        <source src="/assets/video/supreme-commercial-alpha.mp4" type="video/mp4" >
-                    </video>
-            </div>
-
-            <div class="container-mockup reveal">
-                <div class="grid-2">
-                    <video class="full" loop muted playsinline autoplay style="height:1080px; background-color:#000000;">
-                        <source src="https://www.supremegroup.co.in/static/media/Commercial-Engine.d8957f7c027ca396858e.mp4" type="video/mp4" >
-                    </video>
-                    <video class="full" loop muted playsinline autoplay style="height:1080px; background-color:#000000;">
-                        <source src="https://www.supremegroup.co.in/static/media/Commercial-Cabin.69adf15a8021267cbe8c.mp4" type="video/mp4" >
-                    </video>
-                </div>
-            </div>
-
-            <!-- <div class="container-mockup reveal">                       
-                    <video class="full" loop muted playsinline autoplay>
-                        <source src="/assets/video/supreme-multilanguage.mp4" type="video/mp4" >
-                    </video>
-            </div> -->
+    
 
             <div class="container-mockup reveal">                       
                     <video class="full" loop muted playsinline autoplay>
@@ -2325,14 +2461,18 @@
                 <img src="assets/img/supreme-mobile-02.jpg" class="flow-image">
             </div>
 
-            <!-- <div class="container-mockup reveal">                
-                <img src="assets/img/supreme-mobile-03.jpg" class="flow-image">
-            </div> -->
-
-            <div class="container-mockup reveal">                
-                <img src="assets/img/supreme-tablet-screens.jpg" class="flow-image">
+            <div class="container-mockup reveal">                                           
+                    <video class="full" loop muted playsinline autoplay>
+                        <source src="/assets/video/supreme-passenger-alpha.mp4" type="video/mp4" >
+                    </video>
             </div>
 
+            <div class="container-mockup reveal">                                           
+                    <video class="full" loop muted playsinline autoplay>
+                        <source src="/assets/video/supreme-commercial-alpha.mp4" type="video/mp4" >
+                    </video>
+            </div>
+            
             <div class="container-mockup reveal">                
                 <img src="assets/img/supreme-logo-mockup.jpg" class="flow-image">
             </div>
