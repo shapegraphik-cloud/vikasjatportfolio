@@ -22,7 +22,7 @@ function Home() {
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={Home} />
+      <Route path="/" component={Home} />      
       <Route path="/work" component={Work} />
       <Route path="/work/piramal-nutrition-solutions" component={PiramalNutritionSolutions} />
       <Route component={NotFound} />
